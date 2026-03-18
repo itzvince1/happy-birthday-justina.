@@ -1,0 +1,128 @@
+:root {
+    --accent: #ff2d55;
+    --gold: #d4af37;
+    --white: #ffffff;
+}
+
+body {
+    margin: 0;
+    background: #050505;
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.mesh-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 10% 10%, #2d0a10 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, #1a1a2e 0%, transparent 50%);
+    z-index: -1;
+}
+
+.container {
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Tubidy Pop Animation */
+@keyframes tubidyPop {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.pop { font-size: 3.2rem; line-height: 1; text-transform: uppercase; font-weight: 800; animation: tubidyPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.name-pop { font-family: 'Playfair Display', serif; font-size: 3.8rem; color: var(--accent); margin-top: 10px; animation: tubidyPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; }
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+
+/* The Message Styling */
+.message-section {
+    margin-top: 30px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+.glass-inner {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grace-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; line-height: 1.8; color: #eee; }
+.sub-text { margin-top: 15px; font-size: 0.8rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; }
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(-10px); }
+}
+
+.delay-3 { animation-delay: 1.2s; }
+.delay-4 { animation-delay: 2s; }
+
+.stats-footer span { font-size: 2rem; font-weight: 800; color: var(--accent); display: block; }
+.stats-footer label { font-size: 0.7rem; color: #666; text-transform: uppercase; }
+/* Album Section Styling */
+.album-container {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.album-title {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+    gap: 15px;
+    padding: 10px;
+}
+
+.photo-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Keeps faces from stretching */
+    display: block;
+    filter: grayscale(20%); /* Sophisticated look */
+    transition: filter 0.3s ease;
+}
+
+/* Sophisticated Hover/Tap effect */
+.photo-card:active, .photo-card:hover {
+    transform: scale(0.98);
+}
+
+.photo-card:active img, .photo-card:hover img {
+    filter: grayscale(0%);
+}
+.photo-card.expanded {
+    grid-column: span 2; /* Takes up both columns when tapped */
+    z-index: 100;
+}
+.photo-card.expanded img {
+    height: auto; /* Shows the full height of the photo */
+    filter: grayscale(0%);
+}
+
